@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.grarak.kerneladiutor">
+    package="com.krypton.kernelmanager">
 
     <uses-permission android:name="android.permission.ACCESS_SUPERUSER" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
@@ -33,7 +33,7 @@
             android:name="io.fabric.ApiKey"
             android:value="d89b7ebb31b3bb0ca514a4171c6af37c7c9579c9" />
 
-        <activity android:name=".activities.StartActivity">
+        <activity android:name="com.krypton.kernelmanager.activities.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -46,7 +46,7 @@
         </activity>
 
         <activity
-            android:name=".activities.StartActivityMaterial"
+            android:name="com.krypton.kernelmanager.activities.StartActivityMaterial"
             android:enabled="false"
             android:icon="@mipmap/ic_launcher_material">
             <intent-filter>
@@ -60,26 +60,26 @@
                 android:resource="@xml/shortcuts" />
         </activity>
 
-        <activity android:name=".activities.MainActivity" />
-        <activity android:name=".activities.NavigationActivity" />
-        <activity android:name=".activities.TextActivity" />
+        <activity android:name="com.krypton.kernelmanager.activities.MainActivity" />
+        <activity android:name="com.krypton.kernelmanager.activities.NavigationActivity" />
+        <activity android:name="com.krypton.kernelmanager.activities.TextActivity" />
         <activity
-            android:name=".views.NavHeaderView$MainHeaderActivity"
+            android:name="com.krypton.kernelmanager.views.NavHeaderView$MainHeaderActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <activity android:name=".activities.tools.CustomControlsActivity" />
-        <activity android:name=".activities.EditorActivity" />
-        <activity android:name=".activities.FilePickerActivity" />
-        <activity android:name=".activities.tools.DownloadsActivity" />
-        <activity android:name=".activities.tools.profile.ProfileActivity" />
+        <activity android:name="com.krypton.kernelmanager.activities.tools.CustomControlsActivity" />
+        <activity android:name="com.krypton.kernelmanager.activities.EditorActivity" />
+        <activity android:name="com.krypton.kernelmanager.activities.FilePickerActivity" />
+        <activity android:name="com.krypton.kernelmanager.activities.tools.DownloadsActivity" />
+        <activity android:name="com.krypton.kernelmanager.activities.tools.profile.ProfileActivity" />
         <activity
-            android:name=".activities.SecurityActivity"
+            android:name="com.krypton.kernelmanager.activities.SecurityActivity"
             android:configChanges="locale|keyboard|keyboardHidden|orientation|screenSize|navigation" />
-        <activity android:name=".activities.BannerResizerActivity" />
-        <activity android:name=".activities.tools.profile.ProfileEditActivity" />
-        <activity android:name=".activities.DataSharingSearchActivity" />
+        <activity android:name="com.krypton.kernelmanager.activities.BannerResizerActivity" />
+        <activity android:name="com.krypton.kernelmanager.activities.tools.profile.ProfileEditActivity" />
+        <activity android:name="com.krypton.kernelmanager.activities.DataSharingSearchActivity" />
 
         <receiver
-            android:name=".services.boot.OnBootReceiver"
+            android:name="com.krypton.kernelmanager.services.boot.OnBootReceiver"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
@@ -88,14 +88,14 @@
             </intent-filter>
         </receiver>
 
-        <service android:name=".services.boot.ApplyOnBootService" />
-        <receiver android:name=".services.boot.ApplyOnBoot$CancelReceiver" />
+        <service android:name="com.krypton.kernelmanager.services.boot.ApplyOnBootService" />
+        <receiver android:name="com.krypton.kernelmanager.services.boot.ApplyOnBoot$CancelReceiver" />
 
-        <service android:name=".services.monitor.Monitor" />
-        <receiver android:name=".services.monitor.Monitor$DisableReceiver" />
+        <service android:name="com.krypton.kernelmanager.services.monitor.Monitor" />
+        <receiver android:name="com.krypton.kernelmanager.services.monitor.Monitor$DisableReceiver" />
 
         <!-- Profile Widget -->
-        <receiver android:name=".services.profile.Widget">
+        <receiver android:name="com.krypton.kernelmanager.services.profile.Widget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -106,11 +106,11 @@
         </receiver>
 
         <service
-            android:name=".services.profile.Widget$WidgetService"
+            android:name="com.krypton.kernelmanager.services.profile.Widget$WidgetService"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
 
         <!-- CM SDK -->
-        <receiver android:name=".services.profile.Tile">
+        <receiver android:name="com.krypton.kernelmanager.services.profile.Tile">
             <intent-filter>
                 <action android:name="com.grarak.kerneladiutor.action.ACTION_TOGGLE_STATE" />
             </intent-filter>
@@ -118,7 +118,7 @@
 
         <!-- DashClock -->
         <service
-            android:name=".services.DashClock"
+            android:name="com.krypton.kernelmanager.services.DashClock"
             android:icon="@drawable/ic_launcher_preview"
             android:permission="com.google.android.apps.dashclock.permission.READ_EXTENSION_DATA">
             <intent-filter>
@@ -131,13 +131,13 @@
         </service>
 
         <!-- Tasker -->
-        <activity android:name=".activities.tools.profile.ProfileTaskerActivity">
+        <activity android:name="com.krypton.kernelmanager.activities.tools.profile.ProfileTaskerActivity">
             <intent-filter>
                 <action android:name="com.twofortyfouram.locale.intent.action.EDIT_SETTING" />
             </intent-filter>
         </activity>
 
-        <receiver android:name=".services.profile.Tasker">
+        <receiver android:name="com.krypton.kernelmanager.services.profile.Tasker">
             <intent-filter>
                 <action android:name="com.twofortyfouram.locale.intent.action.FIRE_SETTING" />
             </intent-filter>
