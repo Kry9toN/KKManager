@@ -50,7 +50,7 @@ before_script:
 - adb shell input keyevent 82 &
 
 script:
-- "./gradlew build"
+- "./gradlew release"
 
 before_deploy:
 - cp $TRAVIS_BUILD_DIR/release.jks $HOME
