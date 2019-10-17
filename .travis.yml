@@ -1,125 +1,74 @@
 language: android
-
 sudo: required
-
 jdk: oraclejdk8
-
 before_cache:
-
-- rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
-
-- rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+ - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
+ - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
 
 cache:
-
-directories:
-
-- $HOME/.gradle/caches/
-
-- $HOME/.gradle/wrapper/
+ directories:
+ - $HOME/.gradle/caches/
+ - $HOME/.gradle/wrapper/
 
 env:
-
-global:
-
-- ANDROID_API_LEVEL=28
-
-- EMULATOR_API_LEVEL=22
-
-- ANDROID_BUILD_TOOLS=28.0.3
-
-- ADB_INSTALL_TIMEOUT=5
-
-- secure: M4hoJUUoUvOBYlTOaRUK5KnKoXTTNRKEV5kyQvSzKoGIxS43y4CJRKiXWo7Bnv+9NicEt/spREY4zso5w0YraPuCjqOm2T9mAZvfkLUwY15mCaYCM2N71g7EY3csU4UySG1ivvtLT/Z4thbtny+9QLa/QHcSKKRlRPM5HpuVMMZO/0hnyvnZ6WCFj95sOBwwqIHAnO1l6wMXjtTAfEyxrLyjMWrudUBGHFgdD/MyJoZZpMH6Q+L5y5yf5+6V+38jdxaSF/aRozkJYYdi2AvOpmrrAdPHM+FWNQyilMH90+v70/rnrEak9k3XEQ6xefRmj868BQbxe2dRuOQPI4O8/AV9Ct3bkAjVNn/93wnKCKuShF4MepYmH/Ftqd2o7kyAp7+26AhszMlnRd2ob2aDRIatfXpnPOFtFr91Iyx7RWoMTJjs67LaHy4JwFMn6I0lpAbo1GOwidGf2Q4EYfzKYjiqreFRLGhNoag978LfM0XXj5GJZ5lFHky/6AIzC8XY6z3muxFSjkJUYhFlxSeAT2WYMS7l5VY75UJd2KpMwJwle9q+ccuO7dxzG6Y6N2/Y+PX1Xqzv3akEzph+5W+gGAjl7cLjfiV0oHofYfUlYBLKDJE0T4/1kXDET8/xRRL1OFKnzUSfkMHrLlKazARh77qkJpWalTxLekBiOQuFXKE=
-
-- secure: uLiA8TwVYQrEBpvkdOtqMtbpRHUUCuRMEPaXA2j6uEee5teyjVCQTjJG1KG2GFS7MpAMCnULOoSQYN4NcHCcVPjndipKvSUR5NfdWzG7hwjFkuUfFMSoeD4Bqc7JkZwSqT+BN7R4n6oRuNg3pSlV7ggasGYeRO4FvoHogASbdUIH1OLieF7wBljtvAzsRYqCKGOdeqMdM/KC/0LthqIT2kTwhcAzPeb20dUCtrAMdIfE3duM9pDghtymTLYodS6NeSGQ2OMFUrhzarURdlrh/CR8sTNkq/SdfoDc5cqZjh4zaiK1eoAMOAlvxlUjKjicCH/1mTeByv8Y19sZOkGoKZE9BsBi4/e8yBiYQ50Ndu1Me1Cf3EyW0I12F+amTtevs3Bv1stcYXR/VBo+gKtGqpY3zNF6e+iPLTWXhEyHUyzHP1SZVavIh217BBYfnsUHLSRQ4A71Ctw3TsOzspgVyNbPv1kuYvNYTJzGADIUAMOmf4FvnEcr4H9mf0iYpqmN6u7R9wvDx+aJjCRuLkv0FjP48+dJzgPgsPRL+/K7Tx8iLFWGCxjtw1bcoMUco2ivFfzvYeWLE2uUVAv8cqcAkQTPKpHwNHpxITRzByUCOSKRqjUwlkar4Q9xvF6wsluv8ZQBYKTgGCJv6XLPwqej/THO5Nes/1L+s5Te474CeIs=
+  global:
+  - ANDROID_API_LEVEL=27
+  - EMULATOR_API_LEVEL=22
+  - ANDROID_BUILD_TOOLS=27.0.3
+  - ADB_INSTALL_TIMEOUT=5
+  - secure: M4hoJUUoUvOBYlTOaRUK5KnKoXTTNRKEV5kyQvSzKoGIxS43y4CJRKiXWo7Bnv+9NicEt/spREY4zso5w0YraPuCjqOm2T9mAZvfkLUwY15mCaYCM2N71g7EY3csU4UySG1ivvtLT/Z4thbtny+9QLa/QHcSKKRlRPM5HpuVMMZO/0hnyvnZ6WCFj95sOBwwqIHAnO1l6wMXjtTAfEyxrLyjMWrudUBGHFgdD/MyJoZZpMH6Q+L5y5yf5+6V+38jdxaSF/aRozkJYYdi2AvOpmrrAdPHM+FWNQyilMH90+v70/rnrEak9k3XEQ6xefRmj868BQbxe2dRuOQPI4O8/AV9Ct3bkAjVNn/93wnKCKuShF4MepYmH/Ftqd2o7kyAp7+26AhszMlnRd2ob2aDRIatfXpnPOFtFr91Iyx7RWoMTJjs67LaHy4JwFMn6I0lpAbo1GOwidGf2Q4EYfzKYjiqreFRLGhNoag978LfM0XXj5GJZ5lFHky/6AIzC8XY6z3muxFSjkJUYhFlxSeAT2WYMS7l5VY75UJd2KpMwJwle9q+ccuO7dxzG6Y6N2/Y+PX1Xqzv3akEzph+5W+gGAjl7cLjfiV0oHofYfUlYBLKDJE0T4/1kXDET8/xRRL1OFKnzUSfkMHrLlKazARh77qkJpWalTxLekBiOQuFXKE=
+  - secure: uLiA8TwVYQrEBpvkdOtqMtbpRHUUCuRMEPaXA2j6uEee5teyjVCQTjJG1KG2GFS7MpAMCnULOoSQYN4NcHCcVPjndipKvSUR5NfdWzG7hwjFkuUfFMSoeD4Bqc7JkZwSqT+BN7R4n6oRuNg3pSlV7ggasGYeRO4FvoHogASbdUIH1OLieF7wBljtvAzsRYqCKGOdeqMdM/KC/0LthqIT2kTwhcAzPeb20dUCtrAMdIfE3duM9pDghtymTLYodS6NeSGQ2OMFUrhzarURdlrh/CR8sTNkq/SdfoDc5cqZjh4zaiK1eoAMOAlvxlUjKjicCH/1mTeByv8Y19sZOkGoKZE9BsBi4/e8yBiYQ50Ndu1Me1Cf3EyW0I12F+amTtevs3Bv1stcYXR/VBo+gKtGqpY3zNF6e+iPLTWXhEyHUyzHP1SZVavIh217BBYfnsUHLSRQ4A71Ctw3TsOzspgVyNbPv1kuYvNYTJzGADIUAMOmf4FvnEcr4H9mf0iYpqmN6u7R9wvDx+aJjCRuLkv0FjP48+dJzgPgsPRL+/K7Tx8iLFWGCxjtw1bcoMUco2ivFfzvYeWLE2uUVAv8cqcAkQTPKpHwNHpxITRzByUCOSKRqjUwlkar4Q9xvF6wsluv8ZQBYKTgGCJv6XLPwqej/THO5Nes/1L+s5Te474CeIs=
 
 android:
-
-components:
-
-- tools
-
-- platform-tools
-
-- build-tools-$ANDROID_BUILD_TOOLS
-
-- android-$ANDROID_API_LEVEL
-
-- android-$EMULATOR_API_LEVEL
-
-- extra-google-m2repository
-
-- extra-android-m2repository
-
-- addon-google_apis-google-19
-
-- sys-img-armeabi-v7a-addon-google_apis-google-$ANDROID_API_LEVEL
-
-- sys-img-armeabi-v7a-android-$EMULATOR_API_LEVEL
-
-licenses:
-
-- android-sdk-preview-license-.+
-
-- android-sdk-license-.+
-
-- google-gdk-license-.+
+  components:
+  - tools
+  - platform-tools
+  - build-tools-$ANDROID_BUILD_TOOLS
+  - android-$ANDROID_API_LEVEL
+  - android-$EMULATOR_API_LEVEL
+  - extra-google-m2repository
+  - extra-android-m2repository
+  - addon-google_apis-google-19
+  - sys-img-armeabi-v7a-addon-google_apis-google-$ANDROID_API_LEVEL
+  - sys-img-armeabi-v7a-android-$EMULATOR_API_LEVEL
+  
+  licenses:
+  - android-sdk-preview-license-.+
+  - android-sdk-license-.+
+  - google-gdk-license-.+
 
 before_install:
-
 - openssl aes-256-cbc -K $encrypted_265b8ebc415d_key -iv $encrypted_265b8ebc415d_iv
-
--in release.jks.enc -out release.jks -d
-
+  -in release.jks.enc -out release.jks -d
 - chmod +x gradlew
 
 before_script:
-
 - echo no | android create avd --force -n test -t android-$EMULATOR_API_LEVEL --abi
-
-armeabi-v7a
-
+  armeabi-v7a
 - emulator -avd test -no-skin -no-audio -no-window &
-
 - android-wait-for-emulator
-
 - adb shell input keyevent 82 &
 
 script:
-
 - "./gradlew build"
 
 before_deploy:
-
 - cp $TRAVIS_BUILD_DIR/release.jks $HOME
-
 - cd app/build/outputs/apk/
-
 - jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore $HOME/release.jks -storepass $storepass -keypass $keypass app-release-unsigned.apk krypton
 
 # Verification
-
 - jarsigner -verify app-release-unsigned.apk
-
-- "${ANDROID_HOME}/build-tools/28.0.3/zipalign -v 4 app-release-unsigned.apk KryPtoNKernel.apk"
+- "${ANDROID_HOME}/build-tools/28.0.3/zipalign -v 4 app-release-unsigned.apk Pilketos.apk"
 
 deploy:
+  provider: releases
+  file: KryPtoNKernelManager.apk
+  skip_cleanup: true
 
-provider: releases
-
-file: KryPtoNKernel.apk
-
-skip_cleanup: true
-
-on:
-
-repo: Kry9toN/KernelAdiutor
-
-tags: true
-
-jdk: oraclejdk8
-
-api_key:
-
-secure: "oHTxqWeILCVEyIBt1zOaUaDzE4XqXnh7ZYGy1YZtCYKTjTBy7/Yi/Q4VchgHgWXloo8U4xCOOEWP01/bTHhXU27s+FSpoOUAdg50p/uUkzCkx+BrO+QVZ8kDwXWAfb7VnyULFsvd4FwU6AHjWXRAQqJC+cP5q4/a9v2aamUtGcYqd3nczLigYW2CobVW7PJw0MT8hQEOBhMt489f9mWBAjEWrLyOiqCdUNuhwvZXd+5PFQ/evWHES59N6zh44oLvfoz0nwsFAWJIBjsxYKEBgTTPHJDTMB5Wad7ETPYfRq1m385r/m5gW71X7iH2+lFag/6quYSLAOyl8M9ykMFhwEdqM1GC6z/dikH7I8RXNgG0xLn6rEwauKKAkby/G+Zf4PjFN4WuCPWoLjYv/isr/K1JXKFpAZYLZb6UXTX/sqE8W1JhT79k8lThTo0OjMNTjJU89dMdL/rB7XbS/Mo7kPSWp/fjsnuWTlCxwStJQFFDGX1u4PCTBeRtjwGRMEgW4C7iYvPKQJYvDysmbNbSsMOGVwt3q3p4K8jSe5ZoOk2zNqTCp70zP1tgEQe0Ju6oLIruFUqJCzW4mIFy47Wznryf+nJmYwago5IyXxZJWsh+/I3p3WROoHK0c6t659mnNJy4SLbZzz2sm6qtY3Gl0fMjD74qvpgp4XEuh+m39I8="
+  on:
+    repo: Kry9toN/KKManager
+    tags: true
+    jdk: oraclejdk8
+  api_key:
+    secure: "oHTxqWeILCVEyIBt1zOaUaDzE4XqXnh7ZYGy1YZtCYKTjTBy7/Yi/Q4VchgHgWXloo8U4xCOOEWP01/bTHhXU27s+FSpoOUAdg50p/uUkzCkx+BrO+QVZ8kDwXWAfb7VnyULFsvd4FwU6AHjWXRAQqJC+cP5q4/a9v2aamUtGcYqd3nczLigYW2CobVW7PJw0MT8hQEOBhMt489f9mWBAjEWrLyOiqCdUNuhwvZXd+5PFQ/evWHES59N6zh44oLvfoz0nwsFAWJIBjsxYKEBgTTPHJDTMB5Wad7ETPYfRq1m385r/m5gW71X7iH2+lFag/6quYSLAOyl8M9ykMFhwEdqM1GC6z/dikH7I8RXNgG0xLn6rEwauKKAkby/G+Zf4PjFN4WuCPWoLjYv/isr/K1JXKFpAZYLZb6UXTX/sqE8W1JhT79k8lThTo0OjMNTjJU89dMdL/rB7XbS/Mo7kPSWp/fjsnuWTlCxwStJQFFDGX1u4PCTBeRtjwGRMEgW4C7iYvPKQJYvDysmbNbSsMOGVwt3q3p4K8jSe5ZoOk2zNqTCp70zP1tgEQe0Ju6oLIruFUqJCzW4mIFy47Wznryf+nJmYwago5IyXxZJWsh+/I3p3WROoHK0c6t659mnNJy4SLbZzz2sm6qtY3Gl0fMjD74qvpgp4XEuh+m39I8="
